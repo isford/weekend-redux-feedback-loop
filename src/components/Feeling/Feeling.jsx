@@ -1,13 +1,26 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
+import {useState} from 'react'
 
 export default function Feeling() {
 
+
+    const [feeling, setFeeling] = useState('');
+
+    const feelingInfo = { feeling: setFeeling };
+
+
+
     let history = useHistory();
-    
+
     const handleClick = () => {
-        console.log(`You're going to the next page`)
-        //change location
+        console.log(`You're going to the next page`, feeling)
+        //Sending info to reducer
+        dispatchEvent({
+            type: 'SET_FEELING',
+            payload: feelingInfo
+        });
+        //navigating to next page
         history.push('/understanding')
     }
 
@@ -16,7 +29,7 @@ export default function Feeling() {
             <h1>How are you feeling today?</h1>
 
             <h5>Feeling?</h5>
-            <select>
+            <select name = "feeling" onChange={(event) => setFeeling(event.target.value)}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
