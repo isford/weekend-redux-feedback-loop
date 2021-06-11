@@ -1,6 +1,16 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 
 export default function Feeling() {
+
+    let history = useHistory();
+    
+    const handleClick = () => {
+        console.log(`You're going to the next page`)
+        //change location
+        history.push('/understanding')
+    }
+
     return (
         <div>
             <h1>How are you feeling today?</h1>
@@ -13,7 +23,7 @@ export default function Feeling() {
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <button>Next</button>
+            <button onClick={handleClick}>Next</button>
         </div>
     )
 }
