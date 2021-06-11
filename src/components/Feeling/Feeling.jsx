@@ -1,13 +1,14 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import {useState} from 'react'
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 export default function Feeling() {
 
-
+    const dispatch = useDispatch();
     const [feeling, setFeeling] = useState('');
 
-    const feelingInfo = { feeling: setFeeling };
+    const feelingInfo = { feeling: feeling };
 
 
 
@@ -16,7 +17,7 @@ export default function Feeling() {
     const handleClick = () => {
         console.log(`You're going to the next page`, feeling)
         //Sending info to reducer
-        dispatchEvent({
+        dispatch({
             type: 'SET_FEELING',
             payload: feelingInfo
         });

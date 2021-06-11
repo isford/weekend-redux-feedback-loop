@@ -11,7 +11,7 @@ import logger from 'redux-logger';
 //REDUCERS TIME
 const surveyList = (state = [], action) => {
     if (action.type === 'SET_FEELING') {
-        return action.payload
+        return [...state,action.payload]
     }
     return state;
 }
